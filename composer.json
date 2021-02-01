@@ -2,7 +2,7 @@
     "name": "programster/ical",
     "type": "library",
     "description": "A wrapper around spatie/icalendar-generator, in order to make it easier to create calender events/reminders",
-    "keywords": ["calendar", "reminders", "events", "outlook"],
+    "keywords": ["calendar", "reminders", "events", "ical"],
     "homepage": "https://blog.programster.org",
     "license": "MIT",
     "authors": [

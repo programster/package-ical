@@ -1,0 +1,30 @@
+{
+    "name": "programster/ical",
+    "type": "library",
+    "description": "A wrapper around spatie/icalendar-generator, in order to make it easier to create calender events/reminders",
+    "keywords": ["calendar", "reminders", "events", "outlook"],
+    "homepage": "https://blog.programster.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stuart Page",
+            "email": "sdpagent@gmail.com",
+            "homepage": "https://blog.programster.org/",
+            "role": "Master of the universe."
+        }
+    ],
+    "require": {
+        "php": ">=7.4.0",
+        "spatie/icalendar-generator": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Programster\\iCal\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Programster\\iCal\\Testing\\": "testing"
+        }
+    }
+}

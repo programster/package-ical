@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Programster\iCal;
 
 
-final class AttendeeCollection extends ArrayObject
+final class AttendeeCollection extends \ArrayObject
 {
     public function __construct(Attendee ...$cars)
     {
@@ -20,20 +20,20 @@ final class AttendeeCollection extends ArrayObject
         }
         else
         {
-            throw new Exception("Cannot append non Attendee to a " . __CLASS__);
+            throw new \Exception("Cannot append non Attendee to a " . __CLASS__);
         }
     }
 
 
-    public function offsetSet($index, $newval)
+    public function offsetSet($key, $value)
     {
-        if ($newval instanceof Attendee)
+        if ($value instanceof Attendee)
         {
-            parent::offsetSet($index, $newval);
+            parent::offsetSet($key, $value);
         }
         else
         {
-            throw new Exception("Cannot add a non Car value to a " . __CLASS__);
+            throw new \Exception("Cannot add a non Attendee value to a " . __CLASS__);
         }
     }
 }

@@ -15,8 +15,8 @@ class Event
      * @param string $calendarName
      * @param string $prodId - This property specifies the identifier for the product that created the iCalendar object.
      * @param string $eventName
-     * @param DateTimeInterface $start
-     * @param DateTimeInterface $end
+     * @param \DateTimeInterface $start
+     * @param \DateTimeInterface $end
      */
     public function __construct(
         string $calendarName,
@@ -50,7 +50,7 @@ class Event
             case 'Timespan':
             {
                 $event->startsAt($timeConfiguration->getStart());
-                $event->startsAt($timeConfiguration->getEnd());
+                $event->endsAt($timeConfiguration->getEnd());
             }
             break;
 
@@ -63,13 +63,13 @@ class Event
 
             case 'MultiDay':
             {
-                $event->perid($timeConfiguration->getStart(), $timeConfiguration->getend(), false);
+                $event->period($timeConfiguration->getStart(), $timeConfiguration->getend(), false);
             }
             break;
 
             default:
             {
-                throw new Exception("Unrecognized time config type.");
+                throw new \Exception("Unrecognized time config type.");
             }
         }
 

@@ -4,11 +4,15 @@ declare(strict_types = 1);
 namespace Programster\iCal;
 
 
+use DateTime;
+use DateTimeInterface;
+use DateTimeZone;
+
 class EventTimeConfiguration
 {
-    private \DateTimeInterface $m_start;
-    private ?\DateTimeInterface $m_end;
-    private ?\DateTimeInterface $m_createdAt;
+    private DateTimeInterface $m_start;
+    private ?DateTimeInterface $m_end;
+    private ?DateTimeInterface $m_createdAt;
     private string $m_type;
 
 
@@ -16,10 +20,10 @@ class EventTimeConfiguration
 
 
     public static function createFullDay(
-        int $day,
-        int $month,
-        int $year,
-        ?DateTimeZone $timezone,
+        int                 $day,
+        int                 $month,
+        int                 $year,
+        ?DateTimeZone       $timezone,
         ?DateTimeInterface $createdAt = null
     ) : EventTimeConfiguration
     {
@@ -33,13 +37,13 @@ class EventTimeConfiguration
 
 
     public static function createMultiDay(
-        int $startDay,
-        int $startMonth,
-        int $startYear,
-        int $endDay,
-        int $endMonth,
-        int $endYear,
-        ?DateTimeZone $timezone,
+        int                 $startDay,
+        int                 $startMonth,
+        int                 $startYear,
+        int                 $endDay,
+        int                 $endMonth,
+        int                 $endYear,
+        ?DateTimeZone       $timezone,
         ?DateTimeInterface $createdAt = null
     ) : EventTimeConfiguration
     {
@@ -57,7 +61,6 @@ class EventTimeConfiguration
 
         $config->m_start = $startDate;
         $config->m_end = $endDate;
-        $config->m_isFullDay = false;
         return $config;
     }
 
@@ -71,11 +74,10 @@ class EventTimeConfiguration
     {
         $config = new EventTimeConfiguration();
         $config->m_type = "Timespan";
-        $config->m_isMultiDay = true;
         $config->m_createdAt = $createdAt;
-        $startDate = new \DateTime();
+        $startDate = new DateTime();
         $startDate->setTimestamp($startTimestamp);
-        $endDate = new \DateTime();
+        $endDate = new DateTime();
         $endDate->setTimestamp($endTimestamp);
 
         if ($timezone !== null)
@@ -86,14 +88,13 @@ class EventTimeConfiguration
 
         $config->m_start = $startDate;
         $config->m_end = $endDate;
-        $config->m_isFullDay = false;
         return $config;
     }
 
 
     # Accessors
-    public function getStart() : \DateTimeInterface { return $this->m_start; }
-    public function getEnd() : ?\DateTimeInterface { return $this->m_end; }
-    public function getCreatedAt() : ?\DateTimeInterface { return $this->m_createdAt; }
+    public function getStart() : DateTimeInterface { return $this->m_start; }
+    public function getEnd() : ?DateTimeInterface { return $this->m_end; }
+    public function getCreatedAt() : ?DateTimeInterface { return $this->m_createdAt; }
     public function getType() : string { return $this->m_type; }
 }

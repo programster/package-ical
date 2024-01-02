@@ -44,8 +44,8 @@ class EventTimeConfiguration
     ) : EventTimeConfiguration
     {
         $config = new EventTimeConfiguration();
-        $config->m_start = DateTime::createFromFormat("Y-m-d", "{$year}-{$month}-{$day}", $timezone);
-        $config->m_end = null;
+        $startDate = DateTime::createFromFormat("Y-m-d", "{$startYear}-{$startMonth}-{$startDay}", $timezone);
+        $endDate = DateTime::createFromFormat("Y-m-d", "{$endYear}-{$endMonth}-{$endDay}", $timezone);
         $config->m_createdAt = $createdAt;
         $config->m_type = "MultiDay";
 

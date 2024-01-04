@@ -4,19 +4,21 @@ declare(strict_types = 1);
 namespace Programster\iCal;
 
 
+use Spatie\IcalendarGenerator\Enums\ParticipationStatus;
+
 class Attendee extends Contact
 {
-    private ?Spatie\IcalendarGenerator\Enums\ParticipationStatus $m_participationStatus;
+    private ?ParticipationStatus $m_participationStatus;
 
 
-    public function __construct(string $email, ?string $name, ?Spatie\IcalendarGenerator\Enums\ParticipationStatus $participationStatus)
+    public function __construct(string $email, ?string $name, ?ParticipationStatus $participationStatus)
     {
         parent::__construct($email, $name);
         $this->m_participationStatus = $participationStatus;
     }
 
     # Accessors
-    public function getParticipationStatus() : Spatie\IcalendarGenerator\Enums\ParticipationStatus { return $this->m_participationStatus; }
+    public function getParticipationStatus() : ParticipationStatus { return $this->m_participationStatus; }
 }
 
 

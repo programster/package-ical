@@ -11,7 +11,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $event = new Programster\iCal\Event(
     "Calendar Name",
     "Event Name",
-    Programster\iCal\EventTimeConfiguration::createTimespan(time(), time() + 3600),
+    Programster\iCal\EventTimeConfig::createTimespan(time(), time() + 3600),
     "My App or Service Name",
 );
 

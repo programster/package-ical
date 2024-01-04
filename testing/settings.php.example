@@ -1,0 +1,13 @@
+<?php
+
+// Fill in the SMTP settings below in order to test sending yourself ical events.
+
+define('SMTP_HOST', 'smtp.gmail.com');
+define('SMTP_USER', 'myemail@gmail.com');
+define('SMTP_PASSWORD', '');
+define('SMTP_PORT', 587);
+define('SMTP_SECURITY_PROTOCOL', 'tls');
+define('SMTP_FROM_NAME', 'iCAL Testing');
+define('SMTP_FROM_EMAIL', 'myemail@gmail.com');
+define('SMTP_TO_NAME', 'My Name');
+define('SMTP_TO_EMAIL', 'myemail@gmail.com');

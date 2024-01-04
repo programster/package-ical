@@ -8,11 +8,10 @@ use DateTime;
 use DateTimeInterface;
 use DateTimeZone;
 
-class EventTimeConfiguration
+class EventTimeConfig
 {
     private DateTimeInterface $m_start;
     private ?DateTimeInterface $m_end;
-    private ?DateTimeInterface $m_createdAt;
     private string $m_type;
 
 
@@ -24,13 +23,11 @@ class EventTimeConfiguration
         int                 $month,
         int                 $year,
         ?DateTimeZone       $timezone,
-        ?DateTimeInterface $createdAt = null
-    ) : EventTimeConfiguration
+    ) : EventTimeConfig
     {
-        $config = new EventTimeConfiguration();
+        $config = new EventTimeConfig();
         $config->m_start = DateTime::createFromFormat("Y-m-d", "{$year}-{$month}-{$day}", $timezone);
         $config->m_end = null;
-        $config->m_createdAt = $createdAt;
         $config->m_type = "FullDay";
         return $config;
     }
@@ -44,13 +41,11 @@ class EventTimeConfiguration
         int                 $endMonth,
         int                 $endYear,
         ?DateTimeZone       $timezone,
-        ?DateTimeInterface $createdAt = null
-    ) : EventTimeConfiguration
+    ) : EventTimeConfig
     {
-        $config = new EventTimeConfiguration();
+        $config = new EventTimeConfig();
         $startDate = DateTime::createFromFormat("Y-m-d", "{$startYear}-{$startMonth}-{$startDay}", $timezone);
         $endDate = DateTime::createFromFormat("Y-m-d", "{$endYear}-{$endMonth}-{$endDay}", $timezone);
-        $config->m_createdAt = $createdAt;
         $config->m_type = "MultiDay";
 
         if ($timezone !== null)
@@ -69,12 +64,10 @@ class EventTimeConfiguration
         int $startTimestamp,
         int $endTimestamp,
         ?DateTimeZone $timezone = null,
-        ?DateTimeInterface $createdAt = null
-    ) : EventTimeConfiguration
+    ) : EventTimeConfig
     {
-        $config = new EventTimeConfiguration();
+        $config = new EventTimeConfig();
         $config->m_type = "Timespan";
-        $config->m_createdAt = $createdAt;
         $startDate = new DateTime();
         $startDate->setTimestamp($startTimestamp);
         $endDate = new DateTime();
@@ -95,6 +88,5 @@ class EventTimeConfiguration
     # Accessors
     public function getStart() : DateTimeInterface { return $this->m_start; }
     public function getEnd() : ?DateTimeInterface { return $this->m_end; }
-    public function getCreatedAt() : ?DateTimeInterface { return $this->m_createdAt; }
     public function getType() : string { return $this->m_type; }
 }
